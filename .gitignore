@@ -1,0 +1,4 @@
+node_modules/
+app_run.js
+uploads/avatars/*
+.DS_Store
