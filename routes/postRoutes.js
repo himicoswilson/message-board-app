@@ -3,7 +3,7 @@ const router = express.Router();
 const postController = require('../controllers/postController');
 
 router.post('/create', postController.createPost);
-router.get('/:id', postController.getPost);
+router.get('/post/:id', postController.getPost);
 router.get('/newest', postController.getNewestPost);
 router.get('/page/:page', postController.getPagePosts);
 router.put('/edit/:id', postController.editPost);
