@@ -1,11 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const session = require('express-session');
 
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', // 設定允許的前端來源
+    credentials: true // 允許攜帶身份驗證信息，例如 Cookie
+}));
+app.use(session({
+    secret: 'secretkey',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 5 * 60 * 1000, // 5 min
+        secure: false
+    }
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
